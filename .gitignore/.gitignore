@@ -12,4 +12,10 @@ mail.each do |a|
 	puts a.text
 end
 end
- 
+
+require 'nokogiri'
+require 'open-uri'
+PAGE_URL = "http://annuaire-des-mairies.com/"
+page = Nokogiri::HTML(open(PAGE_URL))
+links = pages.css('a.lientxt').to_a
+links.each { |href|puts href['href']}
